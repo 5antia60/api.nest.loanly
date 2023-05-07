@@ -1,18 +1,18 @@
 //#region Imports
 
 import { Body, Controller, Delete, Get, Param, Put } from '@nestjs/common';
-import { EquipmentPayload } from './equipment.payload';
-import { EquipmentService } from './equipment.service';
+import { TenderPayload } from './tender.payload';
+import { TenderService } from './tender.service';
 
 //#endregion
 
-@Controller('equipments')
-export class EquipmentController {
+@Controller('tenders')
+export class TenderController {
 
   //#region Constructor
 
   constructor(
-    private equipmentService: EquipmentService,
+    private equipmentService: TenderService,
   ) { }
 
   //#endregion
@@ -20,20 +20,20 @@ export class EquipmentController {
   //#region Methods
 
   @Get()
-  public async getAll(): Promise<EquipmentPayload[]> {
+  public async getAll(): Promise<TenderPayload[]> {
     return await this.equipmentService.listMany();
   }
 
   @Get(':id')
-  public async getById(@Param('id') entityId: string): Promise<EquipmentPayload> {
+  public async getById(@Param('id') entityId: string): Promise<TenderPayload> {
     return await this.equipmentService.getById(entityId);
   }
 
   @Put(':id')
   public async update(
     @Param('id') entityId: string,
-    @Body() payload: EquipmentPayload,
-  ): Promise<EquipmentPayload> {
+    @Body() payload: TenderPayload,
+  ): Promise<TenderPayload> {
     return await this.equipmentService.updateOne(entityId, payload);
   }
 

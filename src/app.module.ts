@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import { EquipmentModule } from './modules/equipment/equipment.module';
+import { TenderModule } from './modules/tender/tender.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { EquipmentModule } from './modules/equipment/equipment.module';
     MongooseModule.forRoot(process.env.MONGODB_KEY),
     UserModule,
     EquipmentModule,
+    TenderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
