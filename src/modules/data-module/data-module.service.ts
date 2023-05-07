@@ -14,7 +14,7 @@ export class DataModuleService {
   //#region Constructor
 
   constructor(
-    @InjectModel('DataModule')
+    @InjectModel('data-module')
     private readonly dataModuleModel: Model<DataModuleModule>,
   ) {}
 
