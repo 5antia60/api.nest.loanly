@@ -14,7 +14,8 @@ export class EquipmentService {
   //#region Constructor
 
   constructor(
-    @InjectModel('User') private readonly equipmentModel: Model<EquipmentModule>,
+    @InjectModel('Equipment')
+    private readonly equipmentModel: Model<EquipmentModule>,
   ) {}
 
   //#endregion

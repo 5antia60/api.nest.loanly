@@ -18,7 +18,8 @@ export class UserService {
   //#region Constructor
 
   constructor(
-    @InjectModel('User') private readonly userModel: Model<UserModule>,
+    @InjectModel('User')
+    private readonly userModel: Model<UserModule>,
     private readonly jwtService: JwtService,
   ) {}
 

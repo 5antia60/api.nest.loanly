@@ -14,7 +14,8 @@ export class TenderService {
   //#region Constructor
 
   constructor(
-    @InjectModel('Tender') private readonly tenderModel: Model<TenderModule>,
+    @InjectModel('Tender')
+    private readonly tenderModel: Model<TenderModule>,
   ) {}
 
   //#endregion
