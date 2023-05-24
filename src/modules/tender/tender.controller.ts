@@ -1,6 +1,6 @@
 //#region Imports
 
-import { Body, Controller, Delete, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { TenderPayload } from './tender.payload';
 import { TenderService } from './tender.service';
 
@@ -12,7 +12,7 @@ export class TenderController {
   //#region Constructor
 
   constructor(
-    private equipmentService: TenderService,
+    private tenderService: TenderService,
   ) { }
 
   //#endregion
@@ -21,12 +21,30 @@ export class TenderController {
 
   @Get()
   public async getAll(): Promise<TenderPayload[]> {
-    return await this.equipmentService.listMany();
+    return await this.tenderService.listMany();
   }
+
+  @Post()
+  public async create(
+    @Body() payload: TenderPayload,
+  ): Promise<void> {
+    return await this.tenderService.create(payload);
+  }
+
+  @Put(':id/:time/:isFinal')
+  public async setTenderDate(
+    @Param('id') entityId: string,
+    @Param('time') time: string,
+    @Param('isFinal') isFinal: string,
+  ): Promise<TenderPayload> {
+    return await this.tenderService.setTenderDate(entityId, time, isFinal);
+  }
+
+
 
   @Get(':id')
   public async getById(@Param('id') entityId: string): Promise<TenderPayload> {
-    return await this.equipmentService.getById(entityId);
+    return await this.tenderService.getById(entityId);
   }
 
   @Put(':id')
@@ -34,12 +52,12 @@ export class TenderController {
     @Param('id') entityId: string,
     @Body() payload: TenderPayload,
   ): Promise<TenderPayload> {
-    return await this.equipmentService.updateOne(entityId, payload);
+    return await this.tenderService.updateOne(entityId, payload);
   }
 
   @Delete(':id')
   public async delete(@Param('id') entityId: string): Promise<void> {
-    return await this.equipmentService.deleteOne(entityId);
+    return await this.tenderService.deleteOne(entityId);
   }
 
   //#endregion

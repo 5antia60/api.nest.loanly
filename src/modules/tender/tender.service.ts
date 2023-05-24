@@ -22,6 +22,10 @@ export class TenderService {
 
   //#region Methods
 
+  public async create(payload: TenderPayload): Promise<void> {
+    return void await this.tenderModel.create(payload);
+  }
+
   public async listMany(): Promise<TenderPayload[]> {
     return await this.tenderModel.find<TenderPayload>().exec();
   }
@@ -40,6 +44,18 @@ export class TenderService {
 
   public async deleteOne(entityId: string): Promise<void> {
     return void (await this.tenderModel.deleteOne({ _id: entityId }).exec());
+  }
+
+  public async setTenderDate(entityId: string, time: string, isFinal: string): Promise<TenderPayload> {
+    const isDate2 = isFinal === 'final';
+    const dateToUpdate = new Date();
+    const [hour, minute] = time.split(':');
+    dateToUpdate.setHours(+hour, +minute);
+    const dateToUpdateString = dateToUpdate.toISOString();
+
+    return await this.updateOne(entityId, {
+      ...!isDate2 ? { date1: dateToUpdateString } : { date2: dateToUpdateString },
+    });
   }
 
   //#endregion
