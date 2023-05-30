@@ -1,6 +1,6 @@
 //#region Imports
 
-import { Body, Controller, Delete, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { DataModulePayload } from './data-module.payload';
 import { DataModuleService } from './data-module.service';
 
@@ -12,21 +12,28 @@ export class DataModuleController {
   //#region Constructor
 
   constructor(
-    private equipmentService: DataModuleService,
+    private dataModuleService: DataModuleService,
   ) { }
 
   //#endregion
 
   //#region Methods
 
+  @Post()
+  public async create(
+    @Body() payload: DataModulePayload,
+  ): Promise<void> {
+    return await this.dataModuleService.create(payload);
+  }
+
   @Get()
   public async getAll(): Promise<DataModulePayload[]> {
-    return await this.equipmentService.listMany();
+    return await this.dataModuleService.listMany();
   }
 
   @Get(':id')
   public async getById(@Param('id') entityId: string): Promise<DataModulePayload> {
-    return await this.equipmentService.getById(entityId);
+    return await this.dataModuleService.getById(entityId);
   }
 
   @Put(':id')
@@ -34,12 +41,12 @@ export class DataModuleController {
     @Param('id') entityId: string,
     @Body() payload: DataModulePayload,
   ): Promise<DataModulePayload> {
-    return await this.equipmentService.updateOne(entityId, payload);
+    return await this.dataModuleService.updateOne(entityId, payload);
   }
 
   @Delete(':id')
   public async delete(@Param('id') entityId: string): Promise<void> {
-    return await this.equipmentService.deleteOne(entityId);
+    return await this.dataModuleService.deleteOne(entityId);
   }
 
   //#endregion

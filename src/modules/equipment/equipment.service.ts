@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { EquipmentModule } from './equipment.module';
 import { EquipmentPayload } from './equipment.payload';
+import { TenderPayload } from '../tender/tender.payload';
 
 //#endregion
 
@@ -21,6 +22,10 @@ export class EquipmentService {
   //#endregion
 
   //#region Methods
+
+  public async create(payload: EquipmentPayload): Promise<void> {
+    return void await this.equipmentModel.create(payload);
+  }
 
   public async listMany(): Promise<EquipmentPayload[]> {
     return await this.equipmentModel.find<EquipmentPayload>().exec();

@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { DataModuleModule } from './data-module.module';
 import { DataModulePayload } from './data-module.payload';
+import { TenderPayload } from '../tender/tender.payload';
 
 //#endregion
 
@@ -21,6 +22,11 @@ export class DataModuleService {
   //#endregion
 
   //#region Methods
+
+  public async create(payload: DataModulePayload): Promise<void> {
+    return void await this.dataModuleModel.create(payload);
+  }
+
 
   public async listMany(): Promise<DataModulePayload[]> {
     return await this.dataModuleModel.find<DataModulePayload>().exec();

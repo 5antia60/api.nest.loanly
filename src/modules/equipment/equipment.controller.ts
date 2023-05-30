@@ -1,8 +1,9 @@
 //#region Imports
 
-import { Body, Controller, Delete, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { EquipmentPayload } from './equipment.payload';
 import { EquipmentService } from './equipment.service';
+import { TenderPayload } from '../tender/tender.payload';
 
 //#endregion
 
@@ -18,6 +19,13 @@ export class EquipmentController {
   //#endregion
 
   //#region Methods
+
+  @Post()
+  public async create(
+    @Body() payload: EquipmentPayload,
+  ): Promise<void> {
+    return await this.equipmentService.create(payload);
+  }
 
   @Get()
   public async getAll(): Promise<EquipmentPayload[]> {
