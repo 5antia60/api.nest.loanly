@@ -31,14 +31,6 @@ export class TenderController {
     return await this.tenderService.create(payload);
   }
 
-  @Put(':id/:time/:isFinal')
-  public async setTenderDate(
-    @Param('id') entityId: string,
-    @Param('time') time: string,
-    @Param('isFinal') isFinal: string,
-  ): Promise<TenderPayload> {
-    return await this.tenderService.setTenderDate(entityId, time, isFinal);
-  }
 
 
 

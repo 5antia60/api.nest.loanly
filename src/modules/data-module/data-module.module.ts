@@ -10,5 +10,6 @@ import { DataModuleService } from './data-module.service';
   ],
   controllers: [DataModuleController],
   providers: [DataModuleService],
+  exports: [DataModuleService],
 })
 export class DataModuleModule {}

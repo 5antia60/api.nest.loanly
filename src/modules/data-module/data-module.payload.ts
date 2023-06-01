@@ -1,9 +1,7 @@
-import { Document } from 'mongoose';
-
-export class DataModulePayload extends Document {
-  public tempOff: number;
-  public tempOnStop: number;
-  public tempOnRunning: string;
-  public dateUpdate: Date;
-  public tenderId: number;
+export class DataModulePayload {
+  public tempOff?: number;
+  public tempOnStop?: number;
+  public tempOnRunning?: number;
+  public dateUpdate?: Date;
+  public tenderId?: string;
 }

@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 export const DataModuleSchema = new mongoose.Schema({
   tempOff: Number,
   tempOnStop: Number,
-  tempOnRunning: String,
+  tempOnRunning: Number,
   dateUpdate: Date,
-  tenderId: Number,
+  tenderId: String,
 });

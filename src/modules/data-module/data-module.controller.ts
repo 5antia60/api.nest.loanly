@@ -44,6 +44,14 @@ export class DataModuleController {
     return await this.dataModuleService.updateOne(entityId, payload);
   }
 
+  @Put(':id/:time')
+  public async setTenderDate(
+    @Param('id') entityId: string,
+    @Param('time') time: string,
+  ): Promise<void> {
+    return await this.dataModuleService.setDataModuleDate(entityId, time);
+  }
+
   @Delete(':id')
   public async delete(@Param('id') entityId: string): Promise<void> {
     return await this.dataModuleService.deleteOne(entityId);

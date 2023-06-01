@@ -44,6 +44,16 @@ export class DataModuleService {
     return await this.getById(entityId);
   }
 
+  public async setDataModuleDate(entityId: string, time: string): Promise<void> {
+    const [runningTimeInMs, stoppedTimeInMs] = time.split(':');
+    const dataModule = await this.getById(entityId);
+
+    await this.updateOne(entityId, {
+      tempOnRunning: dataModule.tempOnRunning + +runningTimeInMs,
+      tempOnStop: dataModule.tempOnStop + +stoppedTimeInMs,
+    });
+  }
+
   public async deleteOne(entityId: string): Promise<void> {
     return void (await this.dataModuleModel.deleteOne({ _id: entityId }).exec());
   }
