@@ -22,8 +22,8 @@ export class TenderService {
 
   //#region Methods
 
-  public async create(payload: TenderPayload): Promise<void> {
-    return void await this.tenderModel.create(payload);
+  public async create(payload: TenderPayload): Promise<any> {
+    return await this.tenderModel.create(payload);
   }
 
   public async listMany(): Promise<TenderPayload[]> {

@@ -27,7 +27,7 @@ export class TenderController {
   @Post()
   public async create(
     @Body() payload: TenderPayload,
-  ): Promise<void> {
+  ): Promise<any> {
     return await this.tenderService.create(payload);
   }
 
