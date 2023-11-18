@@ -3,11 +3,12 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { EquipmentPayload } from './equipment.payload';
 import { EquipmentService } from './equipment.service';
-import { TenderPayload } from '../tender/tender.payload';
+import { ApiTags } from '@nestjs/swagger';
 
 //#endregion
 
 @Controller('equipments')
+@ApiTags('equipments')
 export class EquipmentController {
 
   //#region Constructor

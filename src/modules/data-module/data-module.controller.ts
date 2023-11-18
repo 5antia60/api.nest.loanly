@@ -3,10 +3,12 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { DataModulePayload } from './data-module.payload';
 import { DataModuleService } from './data-module.service';
+import { ApiTags } from '@nestjs/swagger';
 
 //#endregion
 
 @Controller('data-modules')
+@ApiTags('data-module')
 export class DataModuleController {
 
   //#region Constructor

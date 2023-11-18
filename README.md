@@ -32,6 +32,11 @@
 $ npm install
 ```
 
+## Setting to Node 16
+```bash
+$ nvm use 16
+```
+
 ## Running the app
 
 ```bash

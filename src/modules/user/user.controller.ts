@@ -5,10 +5,12 @@ import { LoginDto } from './dto/login.dto';
 import { SignUpDto } from './dto/signUp.dto';
 import { UserPayload } from './user.payload';
 import { UserService } from './user.service';
+import { ApiTags } from '@nestjs/swagger';
 
 //#endregion
 
 @Controller('users')
+@ApiTags('users')
 export class UserController {
 
   //#region Constructor
