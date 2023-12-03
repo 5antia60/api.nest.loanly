@@ -48,7 +48,7 @@ export class UserService {
   ): Promise<{ user: UserPayload; token: string }> {
     const { email, password } = payload;
 
-    const user = await this.userModel.findOne<UserPayload>({ email }).exec();
+    const user = await this.userModel.findOne<UserPayload>({ email });
 
     if (!user)
       throw new UnauthorizedException('Email ou senha erradas');

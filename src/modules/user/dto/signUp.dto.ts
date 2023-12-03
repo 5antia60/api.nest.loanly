@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class SignUpDto {
   @ApiProperty()
@@ -12,10 +12,9 @@ export class SignUpDto {
   @IsEmail({}, { message: 'Formato de email inválido' })
   public email: string;
 
-  @ApiProperty()
-  @IsNotEmpty({ message: 'É necessário enviar o imageUrl' })
+  @ApiPropertyOptional()
   @IsString()
-  public imageUrl: string;
+  public imageUrl?: string;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'É necessário enviar a password' })
